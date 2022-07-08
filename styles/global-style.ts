@@ -1,17 +1,22 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
-
+import { theme } from "./theme";
 export const GlobalStyle = createGlobalStyle` ${normalize}  
     html {    
         box-sizing: border-box;    
         font-size: 16px;
-            min-width: 320px;  } 
+        min-width: 320px;  
+    } 
+
     a { 
         cursor: pointer; 
         text-decoration: none; 
-        #root {
-        max-width: 900px;
-        margin: 0 auto;
+        
+        #root
+        {
+            max-width: 900px;
+            margin: 0 auto;
+        }
     }
 
     li {
@@ -40,4 +45,4 @@ export const GlobalStyle = createGlobalStyle` ${normalize}
     button:disabled {
         cursor: not-allowed;
     }
-}`;
+`;

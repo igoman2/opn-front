@@ -1,5 +1,7 @@
 import ReactLoading, { LoadingType } from "react-loading";
 
+import { theme } from "../styles/theme";
+
 interface ILoaderProps {
     type: LoadingType;
     color: string;
@@ -20,7 +22,7 @@ const Loader: React.FC<ILoaderProps> = (props) => {
                 <h2>{props.message}</h2>
                 <ReactLoading
                     type={props.type}
-                    color={props.color}
+                    color={theme.colors[props.color]}
                     height={"80%"}
                     width={"80%"}
                 />

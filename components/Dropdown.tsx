@@ -1,4 +1,4 @@
-import { CSSProperties, ChangeEvent, ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import Select, {
     DropdownIndicatorProps,
     ValueContainerProps,
@@ -9,6 +9,7 @@ import { CSSObject } from "styled-components";
 import Chevron from "../asset/Chevron.svg";
 import Image from "next/image";
 import { SearchInput } from "./InputForm";
+import { theme } from "../styles/theme";
 
 interface IDropdownProps {
     children?: ReactNode;
@@ -20,36 +21,42 @@ interface IDropdownProps {
 
 const Dropdown: React.FC<IDropdownProps> = (props) => {
     const colourStyles: any = {
-        control: (styles: CSSProperties) => ({
+        control: (styles: CSSObject) => ({
             ...styles,
             borderRadius: "30px",
-            border: "1px solid #bdbdbd",
+            border: `1px solid ${theme.colors.gray_1}`,
             boxShadow: "none",
             "&:hover": {
-                border: "1px solid #bdbdbd",
+                border: `1px solid ${theme.colors.gray_1}`,
             },
-
+            cursor: "pointer",
             width: "320px",
             padding: "0px 17px 0px 20px",
             height: "42px",
         }),
-        menu: (styles: CSSProperties) => ({
+        menu: (styles: CSSObject) => ({
             ...styles,
             width: "320px",
         }),
-        option: (styles: CSSObject, { isDisabled }: CSSObject) => {
-            return {
-                ...styles,
-                width: "320px",
-                color: "black",
-                backgroundColor: "white",
-                ":active": {
-                    ...styles[":active"],
-                    backgroundColor: "white",
-                },
-                cursor: isDisabled ? "not-allowed" : "default",
-            };
-        },
+        option: (styles: CSSObject, { isDisabled }: CSSObject) => ({
+            ...styles,
+            width: "320px",
+            color: `${theme.colors["black"]}`,
+            backgroundColor: `${theme.colors.white}`,
+            ":active": {
+                ...styles[":active"],
+                backgroundColor: `${theme.colors.white}`,
+            },
+            ":hover": {
+                backgroundColor: `${theme.colors.blue_1}`,
+                color: `${theme.colors.white}`,
+            },
+            cursor: isDisabled ? "not-allowed" : "pointer",
+        }),
+        placeholder: (styles: CSSObject) => ({
+            ...styles,
+            fontSize: "14px",
+        }),
     };
 
     const CustomIcon = () => {
@@ -82,9 +89,7 @@ const Dropdown: React.FC<IDropdownProps> = (props) => {
                 components={{ ValueContainer, DropdownIndicator }}
                 options={props.options}
                 styles={colourStyles}
-                placeholder={
-                    <div style={{ fontSize: "14px" }}>{props.placeholder}</div>
-                }
+                placeholder={props.placeholder}
             />
         </div>
     );

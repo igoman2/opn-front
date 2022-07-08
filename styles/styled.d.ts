@@ -1,6 +1,13 @@
 import "styled-components";
 declare module "styled-components" {
     export interface DefaultTheme {
-        colors: { black: string; white: string; orange: string };
+        colors: {
+            blue_1: string;
+            gray_1: string;
+            gray_2: string;
+            white: string;
+            black: string;
+            [key: string]: any;
+        };
     }
 }
