@@ -1,8 +1,11 @@
-import type { NextPage } from "next";
-import Search from "./Search";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-const Home: NextPage = () => {
-    return <Search />;
+const Home = () => {
+    const router = useRouter();
+    useEffect(() => {
+        router.push("/search");
+    });
 };
 
 export default Home;
