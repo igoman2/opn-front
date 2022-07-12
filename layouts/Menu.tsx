@@ -43,7 +43,6 @@ const Menus = styled.menu`
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 140%;
     max-width: 900px;
     box-sizing: border-box;
     color: ${(props: IMenuProps) => (props.isInCover ? "white" : "#3955B4")};
