@@ -8,10 +8,12 @@ import { useRouter } from "next/router";
 
 const ColoredHeader = () => {
     const router = useRouter();
+    const isInMain = router.pathname === "/search";
+    console.log(isInMain);
     return (
         <>
-            <ColorHeader>
-                {router.pathname === "/" ? (
+            <Header>
+                {isInMain ? (
                     <div className="child" style={{ visibility: "hidden" }}>
                         .
                     </div>
@@ -28,7 +30,7 @@ const ColoredHeader = () => {
                 )}
                 <div className="child child-center ">
                     <div className="logo-colored">
-                        <Image src={LogoColored} alt="더보기" />
+                        <Image src={LogoColored} alt="logo-color" />
                     </div>
                 </div>
                 <div className="child child-right">
@@ -36,15 +38,15 @@ const ColoredHeader = () => {
                         분석 리포트
                     </span>
                 </div>
-            </ColorHeader>
-            <Menu isInCover={false} />
+            </Header>
+            {!isInMain ? <Menu isInCover={false} /> : null}
         </>
     );
 };
 
 export default ColoredHeader;
 
-const ColorHeader = styled.header`
+const Header = styled.header`
     height: 50px;
     padding: 20px 20px;
     display: flex;
@@ -52,6 +54,12 @@ const ColorHeader = styled.header`
     justify-content: space-between;
     max-width: 900px;
     box-sizing: border-box;
+
+    .chevron-left {
+        width: 8px;
+        height: 14px;
+        margin-right: 7px;
+    }
 
     .logo-colored {
         width: 70px;
