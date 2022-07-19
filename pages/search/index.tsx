@@ -4,7 +4,6 @@ import InputForm from "../../components/InputForm";
 const Search = () => {
     return (
         <>
-            <ColoredHeader />
             <InputForm />
         </>
     );

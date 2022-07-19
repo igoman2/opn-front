@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoColored from "../asset/Logo-colored.png";
+import LogoColored from "../public/asset/Logo-colored.png";
 import Menu from "./Menu";
-import chevronLeft from "../asset/Chevron-left-blue.svg";
+import chevronLeft from "../public/asset/Chevron-left-blue.svg";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
 const ColoredHeader = () => {
     const router = useRouter();
     const isInMain = router.pathname === "/search";
-    console.log(isInMain);
+
     return (
-        <>
+        <HeaderWrapper>
             <Header>
                 {isInMain ? (
                     <div className="child" style={{ visibility: "hidden" }}>
@@ -40,11 +40,17 @@ const ColoredHeader = () => {
                 </div>
             </Header>
             {!isInMain ? <Menu isInCover={false} /> : null}
-        </>
+        </HeaderWrapper>
     );
 };
 
 export default ColoredHeader;
+
+const HeaderWrapper = styled.div`
+    position: sticky;
+    top: 0;
+    z-index: 100;
+`;
 
 const Header = styled.header`
     height: 50px;
@@ -53,7 +59,11 @@ const Header = styled.header`
     align-items: center;
     justify-content: space-between;
     max-width: 900px;
+    width: 100%;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
     .chevron-left {
         width: 8px;

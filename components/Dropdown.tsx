@@ -1,4 +1,3 @@
-import { CSSProperties, ReactNode } from "react";
 import Select, {
     DropdownIndicatorProps,
     ValueContainerProps,
@@ -8,6 +7,7 @@ import Select, {
 import { CSSObject } from "styled-components";
 import Chevron from "../asset/Chevron.svg";
 import Image from "next/image";
+import { ReactNode } from "react";
 import { SearchInput } from "./InputForm";
 import { theme } from "../styles/theme";
 
@@ -90,6 +90,7 @@ const Dropdown: React.FC<IDropdownProps> = (props) => {
                 options={props.options}
                 styles={colourStyles}
                 placeholder={props.placeholder}
+                instanceId={props.placeholder}
             />
         </div>
     );

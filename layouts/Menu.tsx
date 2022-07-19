@@ -36,7 +36,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
     );
 };
 
-const Menus = styled.menu`
+const Menus = styled.div`
     display: flex;
     justify-content: space-evenly;
     font-family: "Noto Sans";
@@ -47,6 +47,7 @@ const Menus = styled.menu`
     box-sizing: border-box;
     color: ${(props: IMenuProps) => (props.isInCover ? "white" : "#3955B4")};
     margin-bottom: 10px;
+    height: 40px;
 
     a {
         padding: 10px;
