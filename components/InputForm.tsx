@@ -3,7 +3,7 @@ import { DEPARTMENTS, LOCATIONS } from "../util/hospitalOptions";
 import Dropdown from "./Dropdown";
 import Image from "next/image";
 import Loader from "./Loader";
-import reportIcon from "../public/asset/carbon_report.svg";
+import reportIcon from "../public/assets/carbon_report.svg";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";

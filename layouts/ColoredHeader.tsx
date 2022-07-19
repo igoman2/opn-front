@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoColored from "../public/asset/Logo-colored.png";
+import LogoColored from "../public/assets/Logo-colored.png";
 import Menu from "./Menu";
-import chevronLeft from "../public/asset/Chevron-left-blue.svg";
+import chevronLeft from "../public/assets/Chevron-left-blue.svg";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 

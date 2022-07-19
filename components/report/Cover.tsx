@@ -1,4 +1,4 @@
-import Cover1 from "../../public/asset/Cover1.png";
+import Cover1 from "../../public/assets/Cover1.png";
 import Image from "next/image";
 import styled from "styled-components";
 

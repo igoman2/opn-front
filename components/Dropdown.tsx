@@ -5,7 +5,7 @@ import Select, {
 } from "react-select";
 
 import { CSSObject } from "styled-components";
-import Chevron from "../public/asset/Chevron.svg";
+import Chevron from "../public/assets/Chevron.svg";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { SearchInput } from "./InputForm";

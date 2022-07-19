@@ -3,7 +3,7 @@ import Cover from "./Cover";
 import Dictionary from "../UI/Dictionary";
 import Image from "next/image";
 import List from "../UI/List";
-import pin from "../../public/asset/pin_icon.svg";
+import pin from "../../public/assets/pin_icon.svg";
 import styled from "styled-components";
 
 interface IIntroProps {
@@ -69,7 +69,7 @@ const Intro: React.FC<IIntroProps> = (props) => {
             break;
     }
     // const iconUrl = "icon/" + "icon-" + depIcon + ".svg";
-    const iconURL = require(`../../public/asset/icon-${depIcon}.svg`);
+    const iconURL = require(`../../public/assets/icon-${depIcon}.svg`);
 
     const sectionHeader = {
         sectionTitle: "개요",

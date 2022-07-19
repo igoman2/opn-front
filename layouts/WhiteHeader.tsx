@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import chevronLeft from "../public/asset/Chevron-left.svg";
-import logoWhite from "../public/asset/Logo-white.png";
+import chevronLeft from "../public/assets/Chevron-left.svg";
+import logoWhite from "../public/assets/Logo-white.png";
 import styled from "styled-components";
 
 const WhiteHeader = () => {
