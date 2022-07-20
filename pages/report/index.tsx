@@ -5,6 +5,49 @@ import Market from "../../components/report/Market";
 import User from "../../components/report/User";
 import WhiteHeader from "../../layouts/WhiteHeader";
 
+interface ContextType {
+    query: {
+        department: string;
+        location: string;
+    };
+}
+
+type HospitalTable = {
+    name: string;
+    department: string;
+    open_year: string;
+    area: string;
+    prof: string;
+};
+
+type HospitalHeader = {
+    name: string;
+    department: string;
+    open_year: string;
+    area: string;
+    prof: string;
+};
+
+interface IReportProps {
+    data: {
+        intro: {
+            department: string;
+            department_group: string;
+            address_dong: string;
+            address_sido_sigungu: string;
+            address_realated_dongs: string;
+            hospital_count: string;
+            big_hospital_count: string;
+            big_hospital_departments: string;
+            sales_reflection: string;
+            hospital_table: HospitalTable[];
+            hospital_top10_table: HospitalTable[];
+            big_hospital_table: HospitalTable[];
+            hospital_headers: HospitalHeader[];
+        };
+    };
+}
+
 const resp = {
     intro: {
         department: "일반의원",
@@ -245,15 +288,38 @@ const resp = {
         ],
     },
 };
-const Report = () => {
+
+const Report: React.FC<IReportProps> = ({ data }) => {
     return (
         <>
-            <Intro input={resp.intro} />
+            <Intro input={data.intro} />
             <Market />
             <Compete />
             <User />
         </>
     );
 };
+
+export async function getServerSideProps(context: ContextType) {
+    try {
+        const resp = await fetch(
+            `https://opn-server.herokuapp.com/report/?department=${context.query.department}&location=${context.query.location}`
+        );
+        const respJSON = await resp.json();
+
+        return {
+            props: {
+                data: respJSON,
+            },
+        };
+    } catch {
+        return {
+            notFound: true,
+            // redirect: {
+            //     destination: '/'
+            // }
+        };
+    }
+}
 
 export default Report;

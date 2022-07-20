@@ -1,7 +1,7 @@
 import ReactLoading, { LoadingType } from "react-loading";
 
 import styled from "styled-components";
-import { theme } from "../styles/theme";
+import { theme } from "../../styles/theme";
 
 interface ILoaderProps {
     type: LoadingType;

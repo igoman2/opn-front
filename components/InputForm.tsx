@@ -2,7 +2,7 @@ import { DEPARTMENTS, LOCATIONS } from "../util/hospitalOptions";
 
 import Dropdown from "./Dropdown";
 import Image from "next/image";
-import Loader from "./Loader";
+import Loader from "./UI/Loader";
 import reportIcon from "../public/assets/carbon_report.svg";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -16,7 +16,6 @@ const InputForm = () => {
     const router = useRouter();
     const [department, setDepartment] = useState("");
     const [location, setLocation] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
 
     let isValid = department !== "" && location !== "";
     const departmentSelectHandler = (selectedValue: SearchInput) => {
@@ -31,65 +30,44 @@ const InputForm = () => {
         if (department === "" || location === "") {
             return;
         }
-        setIsLoading(true);
-
-        analyze()
-            .then(() => {
-                setIsLoading(false);
-                router.push("/report");
-            })
-            .catch((error) => {
-                setIsLoading(false);
-                alert(error.message);
-            });
-    };
-
-    const analyze = async () => {
-        const resp = await fetch(
-            `https://opn-server.herokuapp.com/report/?department=${department}&location=${location}`
-        );
-        const respJSON = await resp.json();
-
-        if (!resp.ok) {
-            throw new Error("Something went wrong!");
-        }
+        router.push({
+            pathname: "/report",
+            query: {
+                department: department,
+                location: location,
+            },
+        });
     };
 
     return (
         <div>
-            {isLoading ? (
-                <Loader type="spin" color="blue_1" message="분석중입니다." />
-            ) : (
-                <>
-                    <InputFormSection>
-                        <Dropdown
-                            title="진료과목을 알려주세요"
-                            options={DEPARTMENTS}
-                            onSelect={departmentSelectHandler}
-                            placeholder="진료과목 검색"
-                        />
-                        <Dropdown
-                            title="관심있는 지역을 알려주세요"
-                            options={LOCATIONS}
-                            onSelect={locationSelectHandler}
-                            placeholder="행정동 검색"
-                        />
-                    </InputFormSection>
-                    <BottomButton
-                        disabled={!isValid}
-                        className="bottom-wrapper"
-                        onClick={submitHandler}
-                    >
-                        <div className="report-icon">
-                            <Image src={reportIcon} alt="report" />
-                        </div>
+            <>
+                <InputFormSection>
+                    <Dropdown
+                        title="진료과목을 알려주세요"
+                        options={DEPARTMENTS}
+                        onSelect={departmentSelectHandler}
+                        placeholder="진료과목 검색"
+                    />
+                    <Dropdown
+                        title="관심있는 지역을 알려주세요"
+                        options={LOCATIONS}
+                        onSelect={locationSelectHandler}
+                        placeholder="행정동 검색"
+                    />
+                </InputFormSection>
+                <BottomButton
+                    disabled={!isValid}
+                    className="bottom-wrapper"
+                    onClick={submitHandler}
+                >
+                    <div className="report-icon">
+                        <Image src={reportIcon} alt="report" />
+                    </div>
 
-                        <span className="bottom-button-text">
-                            분석 리포트 보기
-                        </span>
-                    </BottomButton>
-                </>
-            )}
+                    <span className="bottom-button-text">분석 리포트 보기</span>
+                </BottomButton>
+            </>
         </div>
     );
 };
