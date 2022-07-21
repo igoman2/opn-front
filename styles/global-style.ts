@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle` ${normalize}
     html {    
         box-sizing: border-box;    
         min-width: 320px;  
+        max-width: 900px;
+        margin: 0 auto;
         font-size: 62.5%; 
         font-family: "Noto Sans";
         height:100%; 
