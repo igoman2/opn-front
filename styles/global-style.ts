@@ -4,8 +4,10 @@ import { theme } from "./theme";
 export const GlobalStyle = createGlobalStyle` ${normalize}  
     html {    
         box-sizing: border-box;    
-        font-size: 16px;
         min-width: 320px;  
+        font-size: 62.5%; 
+        font-family: "Noto Sans";
+        height:100%; 
     } 
 
     a { 
