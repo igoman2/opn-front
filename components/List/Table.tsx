@@ -80,7 +80,6 @@ const TableWrapper = styled.div`
 
     .table td {
         color: #000;
-
         text-align: center;
     }
 

@@ -45,8 +45,6 @@ const Header = styled.header`
     }
 
     .previous-page-text {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
 
@@ -64,8 +62,6 @@ const Header = styled.header`
     }
 
     .header-description {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 16px;
 

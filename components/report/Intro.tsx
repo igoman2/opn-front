@@ -1,24 +1,28 @@
+import { HospitalHeader, HospitalTable } from "../../pages/report";
+
 import Card from "../UI/Card";
 import Cover from "./Cover";
 import Dictionary from "../UI/Dictionary";
 import Image from "next/image";
-import List from "../UI/List";
+import List from "../List/List";
 import pin from "../../public/assets/pin_icon.svg";
 import styled from "styled-components";
 
 interface IIntroProps {
     input: {
         department: string;
+        department_group: string;
         address_dong: string;
         address_sido_sigungu: string;
         address_realated_dongs: string;
-        big_hospital_count: string;
-        department_group: string;
         hospital_count: string;
+        big_hospital_count: string;
         big_hospital_departments: string;
         sales_reflection: string;
-        hospital_table: any;
-        big_hospital_table: any;
+        hospital_table: HospitalTable[];
+        hospital_top10_table: HospitalTable[];
+        big_hospital_table: HospitalTable[];
+        hospital_headers: HospitalHeader[];
     };
 }
 
@@ -78,7 +82,7 @@ const Intro: React.FC<IIntroProps> = (props) => {
 
     return (
         <IntroWrapper>
-            <Cover sectionHeader={sectionHeader} />
+            <Cover sectionHeader={sectionHeader} pathname="Cover1" />
             <Card>
                 <div className="intro-head">
                     <Image src={pin} alt="pin" />
@@ -153,24 +157,18 @@ const IntroWrapper = styled.div`
     }
 
     .intro-paragraph {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         margin-top: 32px;
     }
 
     .intro-dong-name {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 14px;
         margin-left: 9px;
     }
 
     .intro-dep-name-top {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 18px;
         text-align: center;
@@ -179,16 +177,12 @@ const IntroWrapper = styled.div`
     }
 
     .txt-attractiveness-head {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 14px;
         color: #121212;
     }
 
     .txt-attractiveness-body {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 24px;
         color: #3955b4;
@@ -209,8 +203,6 @@ const IntroWrapper = styled.div`
     }
 
     .intro-guide-text-bot {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         color: #000000;
@@ -219,8 +211,6 @@ const IntroWrapper = styled.div`
     }
 
     .intro-dep-name-bot {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
     }

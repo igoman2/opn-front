@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
-import Card from "./Card";
+import Card from "../UI/Card";
 import Table from "./Table";
 import styled from "styled-components";
 
@@ -75,15 +75,11 @@ export default List;
 
 export const ListWrapper = styled.div`
     .hospital-list-text {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 18px;
         color: #3955b4;
     }
     .hospital-list-header {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 18px;
         color: #3955b4;

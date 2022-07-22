@@ -9,17 +9,22 @@ interface ICardProps {
 
 const Card: React.FC<ICardProps> = (props) => {
     return (
-        <CardCom backgroundColor={props.backgroundColor}>
+        <CradWrapper backgroundColor={props.backgroundColor}>
             {props.children}
-        </CardCom>
+        </CradWrapper>
     );
 };
-const CardCom = styled.div`
+
+interface StyledProps {
+    backgroundColor?: string;
+}
+
+const CradWrapper = styled.div`
     box-sizing: border-box;
     margin: 20px;
     padding: 20px;
     border: 1px solid #ededec;
-    background-color: ${(props: ICardProps) =>
+    background-color: ${(props: StyledProps) =>
         props.backgroundColor ? props.backgroundColor : "white"};
     border-radius: 14px;
 `;

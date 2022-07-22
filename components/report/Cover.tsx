@@ -3,6 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 interface ICoverProps {
+    pathname: string;
     sectionHeader: {
         sectionTitle: string;
         sectionList: string[];
@@ -11,7 +12,7 @@ interface ICoverProps {
 
 const Cover: React.FC<ICoverProps> = (props) => {
     return (
-        <CoverWrapper>
+        <CoverWrapper pathname={props.pathname}>
             <div className="section-header">
                 <div className="section-title">
                     {props.sectionHeader.sectionTitle}
@@ -26,23 +27,27 @@ const Cover: React.FC<ICoverProps> = (props) => {
                     })}
                 </div>
             </div>
-            <Image src={Cover1} objectFit="cover" alt="cover-1" layout="fill" />
         </CoverWrapper>
     );
 };
 
+interface StyledProps {
+    pathname: string;
+}
+
 const CoverWrapper = styled.div`
-    height: calc(100vh - 90px);
+    background: ${(props: StyledProps) =>
+        `url("/assets/${props.pathname}.png")`};
+    background-size: cover;
+    height: 100vh;
     .section-header {
         position: relative;
-        top: 45px;
+        top: 145px;
         width: 100%;
         z-index: 1;
     }
 
     .section-title {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 32px;
         margin-left: 16px;
@@ -52,8 +57,6 @@ const CoverWrapper = styled.div`
     }
 
     .section-list {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 18px;
         margin-left: 36px;

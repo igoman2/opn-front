@@ -38,7 +38,6 @@ function App({ Component, pageProps }: AppProps) {
                     site_name: "hospital-here",
                 }}
             />
-            ;
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <Layout>

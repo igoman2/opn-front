@@ -12,7 +12,7 @@ interface ContextType {
     };
 }
 
-type HospitalTable = {
+export type HospitalTable = {
     name: string;
     department: string;
     open_year: string;
@@ -20,12 +20,17 @@ type HospitalTable = {
     prof: string;
 };
 
-type HospitalHeader = {
+export type HospitalHeader = {
     name: string;
     department: string;
     open_year: string;
     area: string;
     prof: string;
+};
+
+export type Trend = {
+    class: string;
+    value: number;
 };
 
 interface IReportProps {
@@ -44,6 +49,41 @@ interface IReportProps {
             hospital_top10_table: HospitalTable[];
             big_hospital_table: HospitalTable[];
             hospital_headers: HospitalHeader[];
+        };
+        market_analysis: {
+            market_size: string;
+            market_trend: string;
+            hospital_count_past: string;
+            hospital_count_now: string;
+            hospital_count_trend: string;
+            profit_per_area_size: string;
+            profit_per_area_trend: string;
+            address_dong: string;
+            department: string;
+            market_max_size: string;
+            market_max_year: string;
+            market_max_month: string;
+            market_min_size: string;
+            market_min_year: string;
+            market_min_month: string;
+            "3y_trend_start_year": string;
+            "3y_trend_start_market_size": string;
+            "3y_trend_end_year": string;
+            "3y_trend_end_market_size": string;
+            "3y_trend_percent": string;
+            "3y_trend_hospital_count_difference": string;
+            profit_per_50p: string;
+            "3y_trend_profit_per_area_start_year": string;
+            "3y_trend_profit_per_area_start_market_size": string;
+            "3y_trend_profit_per_area_end_year": string;
+            "3y_trend_profit_per_area_end_market_size": string;
+            "3y_trend_profit_per_area_percent": string;
+            market_size_short_trend: Trend[];
+            market_size_long_trend: Trend[];
+            hospital_count_short_trend: Trend[];
+            hospital_count_long_trend: Trend[];
+            profit_per_area_short_trend: Trend[];
+            profit_per_area_long_trend: Trend[];
         };
     };
 }
@@ -293,7 +333,7 @@ const Report: React.FC<IReportProps> = ({ data }) => {
     return (
         <>
             <Intro input={data.intro} />
-            <Market />
+            <Market input={data.market_analysis} />
             <Compete />
             <User />
         </>

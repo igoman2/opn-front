@@ -1,9 +1,8 @@
-import { DEPARTMENTS, LOCATIONS } from "../util/hospitalOptions";
+import { DEPARTMENTS, LOCATIONS } from "../../util/hospitalOptions";
 
 import Dropdown from "./Dropdown";
 import Image from "next/image";
-import Loader from "./UI/Loader";
-import reportIcon from "../public/assets/carbon_report.svg";
+import reportIcon from "../../public/assets/carbon_report.svg";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -40,46 +39,46 @@ const InputForm = () => {
     };
 
     return (
-        <div>
-            <>
-                <InputFormSection>
-                    <Dropdown
-                        title="진료과목을 알려주세요"
-                        options={DEPARTMENTS}
-                        onSelect={departmentSelectHandler}
-                        placeholder="진료과목 검색"
-                    />
-                    <Dropdown
-                        title="관심있는 지역을 알려주세요"
-                        options={LOCATIONS}
-                        onSelect={locationSelectHandler}
-                        placeholder="행정동 검색"
-                    />
-                </InputFormSection>
-                <BottomButton
-                    disabled={!isValid}
-                    className="bottom-wrapper"
-                    onClick={submitHandler}
-                >
-                    <div className="report-icon">
-                        <Image src={reportIcon} alt="report" />
-                    </div>
+        <InputFormWrapper>
+            <InputFormSection>
+                <Dropdown
+                    title="진료과목을 알려주세요"
+                    options={DEPARTMENTS}
+                    onSelect={departmentSelectHandler}
+                    placeholder="진료과목 검색"
+                />
+                <Dropdown
+                    title="관심있는 지역을 알려주세요"
+                    options={LOCATIONS}
+                    onSelect={locationSelectHandler}
+                    placeholder="행정동 검색"
+                />
+            </InputFormSection>
+            <BottomButton
+                disabled={!isValid}
+                className="bottom-wrapper"
+                onClick={submitHandler}
+            >
+                <div className="report-icon">
+                    <Image src={reportIcon} alt="report" />
+                </div>
 
-                    <span className="bottom-button-text">분석 리포트 보기</span>
-                </BottomButton>
-            </>
-        </div>
+                <span className="bottom-button-text">분석 리포트 보기</span>
+            </BottomButton>
+        </InputFormWrapper>
     );
 };
 
 export default InputForm;
 
+const InputFormWrapper = styled.div`
+    margin-top: 90px;
+`;
+
 const InputFormSection = styled.div`
     margin: 15px 20px 15px 20px;
 
     .question {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 18px;
         margin-bottom: 10px;
@@ -98,8 +97,6 @@ const InputFormSection = styled.div`
         border: 1px solid ${(props) => props.theme.colors.gray_1};
         border-radius: 30px;
         height: 42px;
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         color: ${(props) => props.theme.colors.gray_2};
@@ -148,8 +145,6 @@ const BottomButton = styled.button`
     }
 
     .bottom-button-text {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 16px;
         text-align: center;

@@ -77,8 +77,6 @@ const Header = styled.header`
     }
 
     .color-previous-page-text {
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         color: #3955b4;
@@ -87,8 +85,6 @@ const Header = styled.header`
     }
     .colored-header-description {
         color: #3955b4;
-        font-family: "Noto Sans";
-        font-style: normal;
         font-weight: 700;
         font-size: 16px;
     }
