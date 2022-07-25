@@ -32,6 +32,10 @@ export const GlobalStyle = createGlobalStyle` ${normalize}
         padding: 0px;
     }
 
+    input {
+        box-sizing:border-box
+    }
+
     body {
         margin: 0;
         padding: 0;
