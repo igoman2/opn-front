@@ -1,14 +1,15 @@
 import { ApexOptions } from "apexcharts";
 import Card from "../UI/Card";
 import Chart from "react-apexcharts";
+import { ChartValue } from "../../pages/report";
 import React from "react";
-import { Trend } from "../../pages/report";
 import styled from "styled-components";
 
 interface IBarChart {
-    input: Trend[];
+    input: ChartValue[];
     chartName: string;
     chartUnit: string;
+    chartNote?: string;
 }
 
 const BarChart: React.FC<IBarChart> = (props) => {
@@ -19,7 +20,7 @@ const BarChart: React.FC<IBarChart> = (props) => {
     // console.log(rawData)
     const xLabel: string[] = [];
     const chartValue: number[] = [];
-    rawData.map((item: Trend) => {
+    rawData.map((item: ChartValue) => {
         xLabel.push(item.class);
         chartValue.push(item.value);
     });
@@ -84,7 +85,7 @@ const BarChart: React.FC<IBarChart> = (props) => {
                                 단위: {props.chartUnit}
                             </div>
                         </div>
-                        {/* <div className="chart-note">{props.chartNote}</div> */}
+                        <div className="chart-note">{props.chartNote}</div>
                     </div>
                     <div className="app">
                         <div className="row">

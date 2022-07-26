@@ -3,13 +3,13 @@ import { Component, useMemo, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import Card from "../UI/Card";
 import Chart from "react-apexcharts";
-import { Trend } from "../../pages/report";
+import { ChartValue } from "../../pages/report";
 import styled from "styled-components";
 
 interface ILineChartProps {
     chartName: string;
     chartUnit: string;
-    input: Trend[];
+    input: ChartValue[];
 }
 const LineChart: React.FC<ILineChartProps> = (props) => {
     const rawData = props.input;

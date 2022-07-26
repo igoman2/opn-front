@@ -7,7 +7,7 @@ import styled from "styled-components";
 interface IListProps {
     listTitle?: string;
     list: ListType[];
-    header: string;
+    header?: string;
 }
 
 interface ListType {
