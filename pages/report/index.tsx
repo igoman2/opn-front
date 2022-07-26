@@ -28,9 +28,15 @@ export type HospitalHeader = {
   prof: string;
 };
 
-export type Trend = {
+export type ChartValue = {
   class: string;
   value: number;
+};
+
+export type TableValue = {
+  profit: string;
+  acquisition_rate: string;
+  rate_squared: number;
 };
 
 interface IReportProps {
@@ -78,12 +84,52 @@ interface IReportProps {
       "3y_trend_profit_per_area_end_year": string;
       "3y_trend_profit_per_area_end_market_size": string;
       "3y_trend_profit_per_area_percent": string;
-      market_size_short_trend: Trend[];
-      market_size_long_trend: Trend[];
-      hospital_count_short_trend: Trend[];
-      hospital_count_long_trend: Trend[];
-      profit_per_area_short_trend: Trend[];
-      profit_per_area_long_trend: Trend[];
+      market_size_short_trend: ChartValue[];
+      market_size_long_trend: ChartValue[];
+      hospital_count_short_trend: ChartValue[];
+      hospital_count_long_trend: ChartValue[];
+      profit_per_area_short_trend: ChartValue[];
+      profit_per_area_long_trend: ChartValue[];
+    };
+    competitive_analysis: {
+      all_hospital_average_profit: string;
+      new_hospital_average_profit: string;
+      competition_type: string;
+      competition_rate: string;
+      address_dong: string;
+      department: string;
+      new_hospital_count: string;
+      all_to_new_compare: string;
+      hospital_profit_distribution_chart: ChartValue[];
+      competition_table: TableValue[];
+      competition_top10_table: TableValue[];
+      competition_rest_info: [
+        {
+          rest_hospital_count: number;
+          rate_sum_top10: number;
+          rate_squared_sum_top10: number;
+          rate_sum_rest: number;
+          rate_squared_sum_rest: number;
+        }
+      ];
+      new_hospital_headers: [
+        {
+          open_date: string;
+          hospital_name: string;
+          area: string;
+          prof: string;
+        }
+      ];
+      new_hospital_table: [];
+      closed_hospital_headers: [
+        {
+          open_date: string;
+          closed_date: string;
+          hospital_name: string;
+          area: string;
+        }
+      ];
+      closed_hospital_table: [];
     };
   };
 }
@@ -334,8 +380,8 @@ const Report: React.FC<IReportProps> = ({ data }) => {
     <>
       <Intro input={data.intro} />
       <Market input={data.market_analysis} />
-      {/* <Compete />
-            <User /> */}
+      <Compete input={data.competitive_analysis} />
+      <User />
     </>
   );
 };

@@ -3,12 +3,13 @@ import styled from "styled-components";
 interface ITextBoxProps {
     header: string;
     body: string;
+    type: string;
 }
 
 const TextBox: React.FC<ITextBoxProps> = (props) => {
     return (
-        <Wrapper>
-            <div className="key-number-box-fat">
+        <Wrapper type={props.type}>
+            <div className="key-number-box">
                 <div className="key-number-box-header">{props.header}</div>
                 <div className="key-number-box-line"></div>
                 <div className="key-number-box-body">{props.body}</div>
@@ -33,28 +34,17 @@ const Wrapper = styled.div`
         display: inline-flex;
     }
 
-    .key-number-box-fat {
+    .key-number-box {
         box-sizing: border-box;
         width: 100%;
-        margin: 3px 6px 3px 6px;
+        margin: ${(props: StyledProps) =>
+            props.type === "lean" ? "0px 5px 0px 5px" : "3px 6px 3px 6px"};
         background: #3955b4;
         border: 0.645524px solid #ededec;
         border-radius: 12.265px;
         display: flex;
         flex-direction: column;
-        padding: 8px;
-    }
-
-    .key-number-box-lean {
-        box-sizing: border-box;
-        width: 100%;
-        margin: 0px 5px 0px 5px;
-        background: #3955b4;
-        border: 0.645524px solid #ededec;
-        border-radius: 12.265px;
-        display: flex;
-        flex-direction: column;
-        padding: 16px;
+        padding: ${(props: any) => (props.type === "lean" ? "16px" : "8px")};
     }
 
     .key-number-box-header {
@@ -81,3 +71,7 @@ const Wrapper = styled.div`
         color: #ffffff;
     }
 `;
+
+interface StyledProps {
+    type: string;
+}

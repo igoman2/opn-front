@@ -1,8 +1,8 @@
 import Card from "../UI/Card";
+import { ChartValue } from "../../pages/report";
 import Cover from "./Cover";
 import React from "react";
 import TextBox from "../UI/TextBox";
-import { Trend } from "../../pages/report";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 
@@ -35,12 +35,12 @@ interface IMarketProps {
     "3y_trend_profit_per_area_end_year": string;
     "3y_trend_profit_per_area_end_market_size": string;
     "3y_trend_profit_per_area_percent": string;
-    market_size_short_trend: Trend[];
-    market_size_long_trend: Trend[];
-    hospital_count_short_trend: Trend[];
-    hospital_count_long_trend: Trend[];
-    profit_per_area_short_trend: Trend[];
-    profit_per_area_long_trend: Trend[];
+    market_size_short_trend: ChartValue[];
+    market_size_long_trend: ChartValue[];
+    hospital_count_short_trend: ChartValue[];
+    hospital_count_long_trend: ChartValue[];
+    profit_per_area_short_trend: ChartValue[];
+    profit_per_area_long_trend: ChartValue[];
   };
 }
 
@@ -80,7 +80,12 @@ const Market: React.FC<IMarketProps> = ({ input }) => {
       <Cover sectionHeader={sectionHeader} pathname="Cover2" />
       <TextBoxWrapper>
         {keyNumberData.map((item, index) => (
-          <TextBox key={index} body={item} header={titleSet[index]} />
+          <TextBox
+            type="fat"
+            key={index}
+            body={item}
+            header={titleSet[index]}
+          />
         ))}
       </TextBoxWrapper>
       <Body>
