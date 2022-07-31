@@ -13,19 +13,13 @@ interface IBarChart {
 }
 
 const BarChart: React.FC<IBarChart> = (props) => {
-    // yaxis:{
-    //   show: false;
-    // }
     const rawData = props.input;
-    // console.log(rawData)
     const xLabel: string[] = [];
     const chartValue: number[] = [];
     rawData.map((item: ChartValue) => {
         xLabel.push(item.class);
         chartValue.push(item.value);
     });
-
-    // console.log(chartValue)
 
     const options: ApexOptions = {
         chart: {

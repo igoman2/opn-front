@@ -1,10 +1,10 @@
 import CompBar from "./CompBar";
 import CompBoxCombinded from "./CompBoxCombinded";
-import CompBoxWhite from "./CompBoxWhite";
 import { ICompeteProps } from "../../report/Compete";
 // import CompBoxCombinded from "./../components/CompBoxCombinded";
-// import CompBoxWhite from "./../components/CompBoxWhite";
+// import TextBoxWhite from "./../components/TextBoxWhite";
 import React from "react";
+import TextBoxWhite from "../../UI/TextBoxWhite";
 import styled from "styled-components";
 
 const CompIndex: React.FC<ICompeteProps> = (props) => {
@@ -24,11 +24,11 @@ const CompIndex: React.FC<ICompeteProps> = (props) => {
                 <span className="comp-index-sum-text">
                     그외 {residualCount}개 의원
                 </span>
-                <CompBoxWhite name="점유율 제곱" num={residualVal} />
+                <TextBoxWhite name="점유율 제곱" num={residualVal} />
             </div>
             <div className="comp-index-bottom">
                 <CompBar sumVal={sumVal} />
-                <CompBoxWhite name="경쟁 지표 (점유율 제곱합)" num={sumVal} />
+                <TextBoxWhite name="경쟁 지표 (점유율 제곱합)" num={sumVal} />
             </div>
         </CompeteScoreWrapper>
     );

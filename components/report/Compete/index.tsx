@@ -1,12 +1,13 @@
-import { ChartValue, TableValue } from "../../pages/report";
+import { ChartValue, TableValue } from "../../../pages/report";
 
-import Card from "../UI/Card";
-import CompIndex from "../UI/Compete/CompIndex";
-import Cover from "./Cover";
-import KeyNumber3x1Comp from "../UI/KeyNumber3x1Comp";
-import List from "../List/List";
+import Card from "../../UI/Card";
+import CompIndex from "./CompIndex";
+import Cover from "../../UI/Cover";
+import List from "../../List/List";
 import React from "react";
+import TextBoxBlue from "../../UI/TextBoxBlue";
 import dynamic from "next/dynamic";
+import styled from "styled-components";
 
 export interface ICompeteProps {
     input: {
@@ -50,7 +51,7 @@ export interface ICompeteProps {
         closed_hospital_table: [];
     };
 }
-const BarChart = dynamic(() => import("../Chart/BarChart"), { ssr: false });
+const BarChart = dynamic(() => import("../../Chart/BarChart"), { ssr: false });
 
 const Compete: React.FC<ICompeteProps> = ({ input }) => {
     const sectionHeader = {
@@ -62,10 +63,31 @@ const Compete: React.FC<ICompeteProps> = ({ input }) => {
             "폐업 의원 목록 (최근 24개월 간)",
         ],
     };
+
+    const titleSet = [
+        "전체 의원 평균 매출액",
+        "신규 의원 평균 매출액",
+        "경쟁 유형",
+    ];
+
+    const visualData = [
+        input.all_hospital_average_profit,
+        input.new_hospital_average_profit,
+        input.competition_type,
+    ];
+
     return (
         <div>
             <Cover sectionHeader={sectionHeader} pathname="Cover3" />
-            <KeyNumber3x1Comp input={input} />
+            <TextBoxWrapper>
+                {visualData.map((item, index) => (
+                    <TextBoxBlue
+                        key={index}
+                        body={item}
+                        header={titleSet[index]}
+                    />
+                ))}
+            </TextBoxWrapper>
             <div className="section-body">
                 <Card>
                     {input.address_dong}의 {input.department} 평균 매출액은 월{" "}
@@ -95,7 +117,10 @@ const Compete: React.FC<ICompeteProps> = ({ input }) => {
                 chartNote="상위 10개 의원만 표시 중"
                 input={input.hospital_profit_distribution_chart}
             />
-            <CompIndex input={input} />
+            <Card>
+                <CompIndex input={input} />
+            </Card>
+
             <List
                 listTitle="신규 의원 목록 (최근24개월 간)"
                 list={input.new_hospital_table}
@@ -109,3 +134,8 @@ const Compete: React.FC<ICompeteProps> = ({ input }) => {
 };
 
 export default Compete;
+
+const TextBoxWrapper = styled.div`
+    margin: 20px 15px 16px 15px;
+    display: flex;
+`;

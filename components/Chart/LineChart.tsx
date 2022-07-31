@@ -24,11 +24,6 @@ const LineChart: React.FC<ILineChartProps> = (props) => {
     let offsetX = 0;
     let offsetY = 2;
 
-    // if (window.matchMedia("(min-width: 768px)").matches) {
-    //     fontSize = "14px";
-    //     offsetX = -10;
-    //     offsetY = 10;
-    // }
     const options: ApexOptions = {
         chart: {
             id: "basic-bar",

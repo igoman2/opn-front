@@ -1,5 +1,5 @@
 import ColoredHeader from "../../layouts/ColoredHeader";
-import InputForm from "../../components/form/InputForm";
+import InputForm from "../../components/Form/InputForm";
 
 const Search = () => {
     return (

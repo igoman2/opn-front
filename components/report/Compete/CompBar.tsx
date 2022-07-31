@@ -1,6 +1,6 @@
 // import "./CompBar.css";
 
-import ProgressBar from "../ProgressBar";
+import ProgressBar from "../../UI/ProgressBar";
 import React from "react";
 
 interface ICompBarProps {

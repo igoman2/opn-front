@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface ITextBoxProps {
     header: string;
     body: string;
-    type: string;
+    type?: string;
 }
 
 const TextBox: React.FC<ITextBoxProps> = (props) => {
@@ -73,5 +73,5 @@ const Wrapper = styled.div`
 `;
 
 interface StyledProps {
-    type: string;
+    type?: string;
 }

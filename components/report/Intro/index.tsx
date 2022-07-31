@@ -1,11 +1,11 @@
-import { HospitalHeader, HospitalTable } from "../../pages/report";
+import { HospitalHeader, HospitalTable } from "../../../pages/report";
 
-import Card from "../UI/Card";
-import Cover from "./Cover";
-import Dictionary from "../UI/Dictionary";
+import Card from "../../UI/Card";
+import Cover from "../../UI/Cover";
+import Dictionary from "../../UI/Dictionary";
 import Image from "next/image";
-import List from "../List/List";
-import pin from "../../public/assets/pin_icon.svg";
+import List from "../../List/List";
+import pin from "../../../public/assets/pin_icon.svg";
 import styled from "styled-components";
 
 interface IIntroProps {
@@ -27,11 +27,8 @@ interface IIntroProps {
 }
 
 const Intro: React.FC<IIntroProps> = (props) => {
-    const introData = props.input;
-    let dep = introData.department;
-
-    let depIcon = "기타";
-    switch (dep) {
+    let depIcon;
+    switch (props.input.department) {
         case "정형외과":
             depIcon = "정형외과";
             break;
@@ -71,9 +68,11 @@ const Intro: React.FC<IIntroProps> = (props) => {
         case "치과":
             depIcon = "치과";
             break;
+        default:
+            depIcon = "기타";
+            break;
     }
-    // const iconUrl = "icon/" + "icon-" + depIcon + ".svg";
-    const iconURL = require(`../../public/assets/icon-${depIcon}.svg`);
+    const iconURL = require(`../../../public/assets/icon-${depIcon}.svg`);
 
     const sectionHeader = {
         sectionTitle: "개요",
@@ -87,31 +86,32 @@ const Intro: React.FC<IIntroProps> = (props) => {
                 <div className="intro-head">
                     <Image src={pin} alt="pin" />
                     <span className="intro-dong-name">
-                        {introData.address_sido_sigungu}{" "}
-                        {introData.address_dong}
+                        {props.input.address_sido_sigungu}{" "}
+                        {props.input.address_dong}
                     </span>
                 </div>
                 <div className="intro-body-1">
                     <div className="intro-body-1-left">
                         <Image src={iconURL} alt="body" />
                         <div className="intro-dep-name-top">
-                            {introData.department}
+                            {props.input.department}
                         </div>
                     </div>
                 </div>
                 <div className="intro-paragraph">
-                    {introData.address_dong}은 {introData.address_sido_sigungu}
-                    의 행정동으로, 지리 상 {introData.address_realated_dongs}을
-                    포함하고 있습니다. 오픈닥터의 개원 입지 분석 시스템에서{" "}
-                    {introData.address_dong} 내 분석 대상 의원은 총{" "}
-                    {introData.hospital_count} 입니다. 또한 병원급 의료기관은
-                    {introData.big_hospital_count === "0개" ? (
+                    {props.input.address_dong}은{" "}
+                    {props.input.address_sido_sigungu}의 행정동으로, 지리 상{" "}
+                    {props.input.address_realated_dongs}을 포함하고 있습니다.
+                    오픈닥터의 개원 입지 분석 시스템에서{" "}
+                    {props.input.address_dong} 내 분석 대상 의원은 총{" "}
+                    {props.input.hospital_count} 입니다. 또한 병원급 의료기관은
+                    {props.input.big_hospital_count === "0개" ? (
                         <span> 없습니다.</span>
                     ) : (
                         <span>
                             {" "}
-                            {introData.big_hospital_count} 존재하며,{" "}
-                            {introData.big_hospital_departments}가 있습니다.
+                            {props.input.big_hospital_count} 존재하며,{" "}
+                            {props.input.big_hospital_departments}가 있습니다.
                         </span>
                     )}
                     <div className="intro-long-line"></div>
@@ -120,7 +120,7 @@ const Intro: React.FC<IIntroProps> = (props) => {
                     분석에 활용되는 진료과
                 </div>
                 <div className="intro-dep-name-bot">
-                    {introData.department_group}
+                    {props.input.department_group}
                 </div>
             </Card>
             <Dictionary input={props.input} />

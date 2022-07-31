@@ -1,31 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ICompBoxWhiteProps {
+interface ICompBoxProps {
     name: string;
-    num: number;
+    num: string;
 }
 
-const CompBoxWhite: React.FC<ICompBoxWhiteProps> = (props) => {
+const CompBox: React.FC<ICompBoxProps> = (props) => {
     return (
         <BoxWrapper>
-            <div className="comp-box-white-wrapper">
-                <div className="comp-box-white">
-                    <div className="comp-box-header-white">{props.name}</div>
-                    <div className="comp-box-body-white">{props.num}</div>
-                </div>
+            <div className="comp-box">
+                <div className="comp-box-header">{props.name}</div>
+                <div className="comp-box-body">{props.num}</div>
             </div>
         </BoxWrapper>
     );
 };
 
-export default CompBoxWhite;
+export default CompBox;
 
 const BoxWrapper = styled.div`
-    .comp-box-wrapper {
-        display: inline-flex;
-        width: 40%;
-    }
+    display: inline-flex;
+    width: 40%;
 
     .comp-box-white-wrapper {
         display: inline-flex;
@@ -105,9 +101,5 @@ const BoxWrapper = styled.div`
 
         color: #3955b4;
         text-align: center;
-    }
-    .comp-box-combinded {
-        display: flex;
-        width: 100%;
     }
 `;
