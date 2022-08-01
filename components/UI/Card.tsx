@@ -23,7 +23,7 @@ const CradWrapper = styled.div`
     box-sizing: border-box;
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ededec;
+    border: ${(props) => `1px solid ${props.theme.colors.gray_3}`};
     background-color: ${(props: StyledProps) =>
         props.backgroundColor ? props.backgroundColor : "white"};
     border-radius: 14px;

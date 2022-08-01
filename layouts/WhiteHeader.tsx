@@ -47,8 +47,7 @@ const Header = styled.header`
     .previous-page-text {
         font-weight: 400;
         font-size: 14px;
-
-        color: #ffffff;
+        color: ${(props) => props.theme.colors.white};
     }
 
     .previous-page-button {
@@ -64,8 +63,7 @@ const Header = styled.header`
     .header-description {
         font-weight: 700;
         font-size: 16px;
-
-        color: #ffffff;
+        color: ${(props) => props.theme.colors.white};
     }
 
     .child {

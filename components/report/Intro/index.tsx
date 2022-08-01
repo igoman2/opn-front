@@ -173,7 +173,7 @@ const IntroWrapper = styled.div`
         font-size: 18px;
         text-align: center;
         margin-top: 15px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
     }
 
     .txt-attractiveness-head {
@@ -185,7 +185,7 @@ const IntroWrapper = styled.div`
     .txt-attractiveness-body {
         font-weight: 700;
         font-size: 24px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
     }
 
     .intro-short-line {
@@ -205,7 +205,7 @@ const IntroWrapper = styled.div`
     .intro-guide-text-bot {
         font-weight: 400;
         font-size: 14px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.5;
         margin-bottom: 12px;
     }

@@ -77,12 +77,12 @@ export const ListWrapper = styled.div`
     .hospital-list-text {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
     }
     .hospital-list-header {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         margin-top: 17px;
     }
     .table-wrapper {

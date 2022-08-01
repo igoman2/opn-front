@@ -1,10 +1,10 @@
-import { Component, useMemo, useState } from "react";
+import { Component, useContext, useMemo, useState } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 import { ApexOptions } from "apexcharts";
 import Card from "../UI/Card";
 import Chart from "react-apexcharts";
 import { ChartValue } from "../../pages/report";
-import styled from "styled-components";
 
 interface ILineChartProps {
     chartName: string;
@@ -12,6 +12,8 @@ interface ILineChartProps {
     input: ChartValue[];
 }
 const LineChart: React.FC<ILineChartProps> = (props) => {
+    const themeContext = useContext(ThemeContext);
+
     const rawData = props.input;
     const xLabel: any[] = [];
     const chartValue: any[] = [];
@@ -38,7 +40,7 @@ const LineChart: React.FC<ILineChartProps> = (props) => {
         },
         stroke: {
             width: 2,
-            colors: ["#3955B4"],
+            colors: [themeContext.colors.blue_1],
         },
         grid: {
             show: false,
@@ -116,13 +118,13 @@ const ChartWrapper = styled.div`
     .chart-name {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
     }
 
     .chart-unit {
         font-weight: 400;
         font-size: 14px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.5;
     }
 
@@ -139,7 +141,7 @@ const ChartWrapper = styled.div`
     .chart-note {
         font-weight: 400;
         font-size: 14px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.5;
     }
 
@@ -150,7 +152,7 @@ const ChartWrapper = styled.div`
     .donut-title {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         margin-bottom: 10px;
     }
     .donut-header {

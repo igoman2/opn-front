@@ -29,9 +29,8 @@ const BoxWrapper = styled.div`
     }
 
     .comp-box {
-        background: #3955b4;
+        background: ${(props) => props.theme.colors.blue_1};
         border-radius: 8.78859px;
-
         display: flex;
         flex-direction: column;
         padding: 10px 12px 12px 10px;
@@ -44,11 +43,8 @@ const BoxWrapper = styled.div`
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
-
         text-align: center;
-
-        color: #ffffff;
-
+        color: ${(props) => props.theme.colors.white};
         opacity: 0.5;
         margin-bottom: 8px;
     }
@@ -58,20 +54,13 @@ const BoxWrapper = styled.div`
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
-
-        color: #ffffff;
-        /* width: 90px; */
+        color: ${(props) => props.theme.colors.white};
         text-align: center;
     }
 
     .comp-box-white {
         box-sizing: border-box;
-        /* OD_회색 */
-
-        border: 0.462557px solid #ededec;
-
-        border-radius: 8.78859px;
-
+        border-radius: 9;
         display: flex;
         flex-direction: column;
         padding: 10px 12px 12px 10px;
@@ -84,11 +73,8 @@ const BoxWrapper = styled.div`
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
-
         text-align: center;
-
-        color: #3955b4;
-
+        color: ${(props) => props.theme.colors.blue_1};
         opacity: 0.5;
         margin-bottom: 8px;
     }
@@ -98,8 +84,7 @@ const BoxWrapper = styled.div`
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
-
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         text-align: center;
     }
 `;

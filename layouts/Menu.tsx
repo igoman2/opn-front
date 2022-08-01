@@ -1,5 +1,6 @@
+import styled, { DefaultTheme, ThemeProps } from "styled-components";
+
 import { Link } from "react-scroll";
-import styled from "styled-components";
 import { useState } from "react";
 
 const menuItems = ["개요", "시장분석", "경쟁분석", "고객분석"];
@@ -43,7 +44,8 @@ const Menus = styled.div`
     font-size: 14px;
     max-width: 900px;
     box-sizing: border-box;
-    color: ${(props: IMenuProps) => (props.isInCover ? "white" : "#3955B4")};
+    color: ${(props: IMenuProps & ThemeProps<DefaultTheme>) =>
+        props.isInCover ? props.theme.colors.white : props.theme.colors.blue_1};
     height: 40px;
 
     a {

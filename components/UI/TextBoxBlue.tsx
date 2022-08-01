@@ -39,8 +39,7 @@ const Wrapper = styled.div`
         width: 100%;
         margin: ${(props: StyledProps) =>
             props.type === "lean" ? "0px 5px 0px 5px" : "3px 6px 3px 6px"};
-        background: #3955b4;
-        border: 0.645524px solid #ededec;
+        background: ${(props) => props.theme.colors.blue_1};
         border-radius: 12.265px;
         display: flex;
         flex-direction: column;
@@ -52,14 +51,13 @@ const Wrapper = styled.div`
         font-size: 14px;
         width: 100%;
         text-align: center;
-        color: #ffffff;
+        color: ${(props) => props.theme.colors.white};
     }
 
     .key-number-box-line {
         width: 9.36px;
         height: 0px;
         align-self: center;
-        border: 0.645524px solid #ededec;
         margin: 8px 0px 8px 0px;
     }
 
@@ -68,7 +66,7 @@ const Wrapper = styled.div`
         font-size: 16px;
         width: 100%;
         text-align: center;
-        color: #ffffff;
+        color: ${(props) => props.theme.colors.white};
     }
 `;
 

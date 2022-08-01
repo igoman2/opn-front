@@ -2,6 +2,7 @@
 
 import ProgressBar from "../../UI/ProgressBar";
 import React from "react";
+import styled from "styled-components";
 
 interface ICompBarProps {
     sumVal: number;
@@ -44,10 +45,15 @@ const CompBar: React.FC<ICompBarProps> = (props) => {
     }
 
     return (
-        <div className="progress-wrapper">
+        <CompBarWrapper>
             <ProgressBar compIndex={compIndex} />
-        </div>
+        </CompBarWrapper>
     );
 };
 
 export default CompBar;
+
+const CompBarWrapper = styled.div`
+    width: 80%;
+    margin: 3px 4px 3px 4px;
+`;

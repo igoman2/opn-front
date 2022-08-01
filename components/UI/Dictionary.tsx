@@ -19,7 +19,7 @@ const Dictionary: React.FC<IDictionary> = (props) => {
     const dictData = props.input;
 
     return (
-        <Card backgroundColor="#ededec">
+        <Card>
             <DictionaryWrapper>
                 <div className="dictionary-header">용어 설명</div>
                 <div className="dictionary-body-wrapper">
@@ -68,8 +68,7 @@ const DictionaryWrapper = styled.div`
     .dictionary-header {
         font-weight: 700;
         font-size: 14px;
-        color: #000000;
-
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.3;
     }
 
@@ -86,21 +85,20 @@ const DictionaryWrapper = styled.div`
         font-weight: 700;
         font-size: 14px;
         width: 10em;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         margin-right: 10px;
     }
 
     .dictionary-body-meaning {
         font-weight: 400;
         font-size: 14px;
-
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
     }
 
     .dictionary-body-explanation {
         font-weight: 400;
         font-size: 12px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         margin-top: 6px;
     }
 

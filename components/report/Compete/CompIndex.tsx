@@ -41,7 +41,7 @@ const CompeteScoreWrapper = styled.div`
         font-weight: 700;
         font-size: 14px;
 
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         margin-bottom: 18px;
     }
     .comp-index-sum {

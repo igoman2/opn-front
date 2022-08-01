@@ -1,9 +1,10 @@
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
+
 import { ApexOptions } from "apexcharts";
 import Card from "../UI/Card";
 import Chart from "react-apexcharts";
 import { ChartValue } from "../../pages/report";
-import React from "react";
-import styled from "styled-components";
 
 interface IBarChart {
     input: ChartValue[];
@@ -13,6 +14,8 @@ interface IBarChart {
 }
 
 const BarChart: React.FC<IBarChart> = (props) => {
+    const themeContext = useContext(ThemeContext);
+
     const rawData = props.input;
     const xLabel: string[] = [];
     const chartValue: number[] = [];
@@ -28,8 +31,7 @@ const BarChart: React.FC<IBarChart> = (props) => {
                 show: false,
             },
         },
-        colors: ["#3955B4"],
-
+        colors: [themeContext.colors.blue_1],
         xaxis: {
             axisTicks: {
                 show: false,
@@ -104,13 +106,13 @@ const ChartWrapper = styled.div`
     .chart-name {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
     }
 
     .chart-unit {
         font-weight: 400;
         font-size: 14px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.5;
     }
 
@@ -127,7 +129,7 @@ const ChartWrapper = styled.div`
     .chart-note {
         font-weight: 400;
         font-size: 14px;
-        color: #000000;
+        color: ${(props) => props.theme.colors.black};
         opacity: 0.5;
     }
 
@@ -138,7 +140,7 @@ const ChartWrapper = styled.div`
     .donut-title {
         font-weight: 700;
         font-size: 18px;
-        color: #3955b4;
+        color: ${(props) => props.theme.colors.blue_1};
         margin-bottom: 10px;
     }
     .donut-header {
