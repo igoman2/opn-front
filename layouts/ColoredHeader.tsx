@@ -1,10 +1,11 @@
+import Router, { useRouter } from "next/router";
+
 import Image from "next/image";
 import Link from "next/link";
 import LogoColored from "../public/assets/Logo-colored.png";
 import Menu from "./Menu";
 import chevronLeft from "../public/assets/Chevron-left-blue.svg";
 import styled from "styled-components";
-import { useRouter } from "next/router";
 
 interface IColoredHeader {
     hasManu: boolean;
@@ -13,15 +14,16 @@ interface IColoredHeader {
 const ColoredHeader: React.FC<IColoredHeader> = ({ hasManu }) => {
     const router = useRouter();
     const isInMain = router.pathname === "/search";
+    const isInReport = router.pathname === "/report";
+
+    const logoClickHandler = () => {
+        Router.push("/search");
+    };
 
     return (
         <HeaderWrapper>
             <Header>
-                {isInMain ? (
-                    <div className="child" style={{ visibility: "hidden" }}>
-                        .
-                    </div>
-                ) : (
+                {isInReport ? (
                     <div className="previous-page-button child child-left">
                         <div className="chevron-left">
                             <Image src={chevronLeft} alt="더보기" />
@@ -31,9 +33,13 @@ const ColoredHeader: React.FC<IColoredHeader> = ({ hasManu }) => {
                             <a className="color-previous-page-text">돌아가기</a>
                         </Link>
                     </div>
+                ) : (
+                    <div className="child" style={{ visibility: "hidden" }}>
+                        .
+                    </div>
                 )}
                 <div className="child child-center ">
-                    <div className="logo-colored">
+                    <div className="logo-colored" onClick={logoClickHandler}>
                         <Image src={LogoColored} alt="logo-color" />
                     </div>
                 </div>
@@ -78,6 +84,7 @@ const Header = styled.header`
     .logo-colored {
         width: 70px;
         height: 21px;
+        cursor: pointer;
     }
 
     .color-previous-page-text {

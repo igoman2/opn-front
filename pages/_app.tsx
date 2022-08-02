@@ -9,17 +9,6 @@ import { theme } from "../styles/theme";
 function App({ Component, pageProps }: AppProps) {
     return (
         <>
-            {/* <Head>
-                <title>개원여기</title>
-                <meta
-                    name="description"
-                    content="서울부터 제주도까지, 각 의과별로 개원을 위한 정보를 찾아보세요."
-                />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                />
-            </Head> */}
             <NextSeo
                 title="개원여기"
                 description="서울부터 제주도까지, 각 의과별로 개원을 위한 정보를 찾아보세요."
