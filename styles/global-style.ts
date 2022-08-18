@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle` ${normalize}
     a { 
         cursor: pointer; 
         text-decoration: none; 
-        
+        color: black;
         #root
         {
             max-width: 900px;
