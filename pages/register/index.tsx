@@ -1,34 +1,33 @@
 import React, { MouseEvent, useContext, useRef, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
-import axios from "axios";
 import Button from "../../components/UI/Button";
 import { useRouter } from "next/router";
+import { useAuthStore } from "../../store";
 
 const Register = () => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const { signup } = useAuthStore();
 
   const themeContext = useContext(ThemeContext);
-  const submitHandler = (event: MouseEvent<HTMLElement>) => {
+  const submitHandler = async (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
     if (passwordRef.current!.value !== passwordConfirmRef.current!.value) {
       alert("비밀번호를 확인해주세요");
       return;
     }
 
-    axios
-      .post("http://localhost:3030/auth/signup", {
+    try {
+      await signup({
         username: usernameRef.current!.value,
         password: passwordRef.current!.value,
-      })
-      .then(function (response) {
-        router.push("/search");
-      })
-      .catch(function (error) {
-        alert(error.response.data.message);
       });
+      router.push("/search");
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
   return (
     <FormWrapper>

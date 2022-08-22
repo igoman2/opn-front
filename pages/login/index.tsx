@@ -1,21 +1,50 @@
-import React, { MouseEvent, useContext } from "react";
+import React, { MouseEvent, useContext, useEffect, useRef } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 import Button from "../../components/UI/Button";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import { useAuthStore } from "../../store";
 
 const Login = () => {
   const themeContext = useContext(ThemeContext);
-  const submitHandler = (event: MouseEvent<HTMLElement>) => {
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+  const { signin, isLoggedIn } = useAuthStore();
+
+  const submitHandler = async (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    Router.push("search");
+    try {
+      await signin({
+        username: usernameRef.current!.value,
+        password: passwordRef.current!.value,
+      });
+      router.push("/search");
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
+
+  useEffect(() => {
+    console.log(isLoggedIn());
+  }, []);
+
   return (
     <FormWrapper>
       <Form>
-        <input type="text" id="id" placeholder="아이디를 입력해주세요." />
-        <input type="password" id="id" placeholder="비밀번호를 입력해주세요." />
+        <input
+          type="text"
+          id="id"
+          placeholder="아이디를 입력해주세요."
+          ref={usernameRef}
+        />
+        <input
+          type="password"
+          id="id"
+          placeholder="비밀번호를 입력해주세요."
+          ref={passwordRef}
+        />
         <Button
           text="로그인"
           backgroundColor={themeContext.colors.blue_1}
