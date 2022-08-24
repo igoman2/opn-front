@@ -9,6 +9,7 @@ export interface AuthState {
   isLoggedIn: () => boolean;
   signup: (user: User) => void;
   signin: (user: User) => void;
+  logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -48,6 +49,13 @@ export const useAuthStore = create<AuthState>()(
           .catch(function (error) {
             throw new Error(error.response.data.message);
           });
+      },
+      logout: () => {
+        console.log("!");
+        set({ token: null });
+        set({
+          user: {},
+        });
       },
     }))
   )

@@ -27,8 +27,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(isLoggedIn());
-  }, []);
+    if (isLoggedIn()) {
+      router.push("/search");
+    }
+  }, [router, isLoggedIn()]);
 
   return (
     <FormWrapper>
