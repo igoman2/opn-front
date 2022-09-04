@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
-import { GlobalStyle } from "../styles/global-style";
 import Head from "next/head";
 import Layout from "../layouts/Layout";
 import { NextSeo } from "next-seo";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../styles/theme";
 import PrivateRoute from "./PrivateRoute";
+import { theme } from "../styles/theme";
+import { GlobalStyle } from "../styles/global-style";
 
 function App({ Component, pageProps }: AppProps) {
   const protectedRoutes = ["/search", "/report"];

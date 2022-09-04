@@ -69,7 +69,6 @@ const Market: React.FC<IMarketProps> = ({ input }) => {
     keyNumberData.push(data.profit_per_area_size);
     keyNumberData.push(data.profit_per_area_trend);
 
-    console.log(keyNumberData);
     const titleSet = [
         "시장규모",
         "시장규모 장기 추세",
